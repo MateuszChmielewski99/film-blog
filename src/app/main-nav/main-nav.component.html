@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'push' : 'over'" [opened]="(isHandset$ | async) === true">
+    <mat-toolbar color>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Kategorie</a>
+      <a mat-list-item href="#">Archiwum</a>
+      <a mat-list-item href="#">O mnie</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row><img src="assets/movie-icon-2.png"></mat-toolbar-row>
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-toolbar-row>
+        <h1 class="title">
+          <a [routerLink]="['/']" routerLinkActive="router-link-active">
+            Mój piękny autorski blog
+          </a>
+        </h1>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span class="spacer"></span>
+        <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon">Logownie </a>
+        <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon"> Rejestracja </a>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
