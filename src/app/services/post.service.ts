@@ -38,9 +38,6 @@ export class PostService {
   }
 
   getById(id: number) {
-    if (id >= this.posts.length)
-      return new Post();
-    else
-      return this.posts[id];
+      return this.posts[id - 1];
   }
 }

@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { PostComponent } from './components/post/post.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { SinglePostComponent } from './components/single-post/single-post.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     MainNavComponent,
     PostComponent,
     PostItemComponent,
-    FooterComponent
+    FooterComponent,
+    SinglePostComponent
   ],
   imports: [
     BrowserModule,
