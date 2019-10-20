@@ -43,5 +43,14 @@ mat-toolbar-row a{
   flex:1 1 auto;
 }
 
+.toolbar{
+  background: url(src\assets\movie-icon-2.png) left no-repeat;
+   background-color: #9C27B0;
+}
+
+.burger-icon{
+  color: white;
+}
+
 
 

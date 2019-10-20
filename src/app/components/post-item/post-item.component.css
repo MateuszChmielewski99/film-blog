@@ -1,0 +1,14 @@
+.default-img {
+  height: inherit;
+  width: inherit;
+  padding: 2px;
+  background: whitesmoke;
+}
+
+.post-item-template {
+  height: 300px;
+  width: 400px;
+  background: lavender;
+}
+
+

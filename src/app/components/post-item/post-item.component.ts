@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from 'src/app/models/post';
 
 @Component({
   selector: 'app-post-item',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() post:Post;
+
+  constructor() {
+    this.post = {
+      id:1,
+      userId:1,
+      description:"Opis",
+      title:"Tytuł",
+      //pictureUrl:"https://via.placeholder.com/600/92c952",
+      date: new Date().toDateString()
+    }
+  }
 
   ngOnInit() {
   }

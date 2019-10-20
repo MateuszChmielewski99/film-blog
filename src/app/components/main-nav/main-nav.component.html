@@ -9,11 +9,12 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row><img src="assets/movie-icon-2.png"></mat-toolbar-row>
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+    <mat-toolbar class="toolbar">
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon" class = "burger-icon">menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
       <mat-toolbar-row>
         <h1 class="title">
           <a [routerLink]="['/']" routerLinkActive="router-link-active">
@@ -23,7 +24,7 @@
       </mat-toolbar-row>
       <mat-toolbar-row>
         <span class="spacer"></span>
-        <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon">Logownie </a>
+        <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon">Logowanie </a>
         <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon"> Rejestracja </a>
       </mat-toolbar-row>
     </mat-toolbar>

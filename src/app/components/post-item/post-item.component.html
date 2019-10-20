@@ -1,1 +1,11 @@
-<p>post-item works!</p>
+<article>
+    <div class="post-item-template">
+        <img [src]="post.pictureUrl" *ngIf="post.pictureUrl;" />
+        <img src="http://clipart-library.com/images/ziX5nLkxT.png" *ngIf="!post.pictureUrl;" class="default-img" />
+        <div class="post-info">
+            <p> {{post.title}}</p>
+            <p> {{post.description}}</p>
+            <p>{{post.date}}</p>
+        </div>
+    </div>
+</article>
