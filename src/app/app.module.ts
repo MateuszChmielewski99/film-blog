@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { MainNavComponent } from './components/layout/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -13,13 +13,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PostComponent } from './components/post/post.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
     PostComponent,
-    PostItemComponent
+    PostItemComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
