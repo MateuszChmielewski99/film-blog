@@ -1,14 +1,29 @@
-.default-img {
-  height: inherit;
-  width: inherit;
-  padding: 2px;
-  background: whitesmoke;
-}
-
 .post-item-template {
   height: 300px;
   width: 400px;
-  background: lavender;
+  text-align: center;
+  float: left;
+  margin: 10px;
+  position: relative;
+  transition: 0.2s;
 }
 
+.post-item-template:hover{
+  height: 310px;
+  width: 410px;
+}
 
+.post-details{
+  width: inherit;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  opacity: 0.7;
+  background: whitesmoke;
+  color: black;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}

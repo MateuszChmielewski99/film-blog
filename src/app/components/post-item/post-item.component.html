@@ -1,11 +1,8 @@
-<article>
-    <div class="post-item-template">
-        <img [src]="post.pictureUrl" *ngIf="post.pictureUrl;" />
-        <img src="http://clipart-library.com/images/ziX5nLkxT.png" *ngIf="!post.pictureUrl;" class="default-img" />
-        <div class="post-info">
+<a [routerLink]="['/#']" routerLinkActive="router-link-active">
+    <div class="post-item-template" [style.background-image]="'url('+post.pictureUrl+')'">
+        <div class="post-details">
             <p> {{post.title}}</p>
-            <p> {{post.description}}</p>
             <p>{{post.date}}</p>
         </div>
     </div>
-</article>
+</a>

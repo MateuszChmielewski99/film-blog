@@ -10,16 +10,7 @@ export class PostItemComponent implements OnInit {
 
   @Input() post:Post;
 
-  constructor() {
-    this.post = {
-      id:1,
-      userId:1,
-      description:"Opis",
-      title:"Tytuł",
-      //pictureUrl:"https://via.placeholder.com/600/92c952",
-      date: new Date().toDateString()
-    }
-  }
+  constructor() {}
 
   ngOnInit() {
   }
