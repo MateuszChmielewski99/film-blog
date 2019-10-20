@@ -44,7 +44,8 @@ mat-toolbar-row a{
 }
 
 .toolbar{
-  background: url(src\assets\movie-icon-2.png) left no-repeat;
+  background: url(src\assets\pineapple-512.png) left no-repeat;
+   /* background-color: #9C27B0; */
    background-color: #9C27B0;
 }
 

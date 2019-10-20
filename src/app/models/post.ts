@@ -6,4 +6,5 @@ export class Post {
     description:string;
     pictureUrl?:string;
     date:string;
+    category:string[];
 }
