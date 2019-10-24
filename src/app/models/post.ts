@@ -7,4 +7,5 @@ export class Post {
     pictureUrl?:string;
     date:string;
     category:string[];
+    likes:number
 }

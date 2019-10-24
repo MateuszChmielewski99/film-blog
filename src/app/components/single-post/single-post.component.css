@@ -41,3 +41,17 @@ mat-card-actions {
 .spacer {
     flex: 1 1 auto;
 }
+
+.likes {
+    padding: 8px 5px;
+    margin: 0px 2px 0px 0px;
+}
+
+#like {
+    margin-right: 0px;
+}
+
+.blue-neon-font {
+    color: royalblue;
+    text-shadow: 1px 1px skyblue;
+}

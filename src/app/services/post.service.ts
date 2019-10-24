@@ -18,7 +18,8 @@ export class PostService {
       title: "Tytuł",
       pictureUrl: "./assets/ramen.jpg",
       date: new Date().toDateString(),
-      category: ["soup"]
+      category: ["soup"],
+      likes:1
     },
     {
       id: 2,
@@ -27,7 +28,8 @@ export class PostService {
       title: "Tytuł2",
       pictureUrl: "https://via.placeholder.com/600/92c952",
       date: new Date().toDateString(),
-      category: ["test1","test2"]
+      category: ["test1","test2"],
+      likes:2
     }
   ];
 
@@ -39,5 +41,10 @@ export class PostService {
 
   getById(id: number) {
       return this.posts[id - 1];
+  }
+
+  updatePost(postId, updatedPost){
+    let post = this.posts.filter(s => s.id == postId);
+    post = updatedPost;
   }
 }

@@ -15,6 +15,9 @@ import { PostComponent } from './components/post/post.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
+import { CommentsComponent } from './components/comment/comments/comments.component';
+import {HttpClientModule} from '@angular/common/http';
+import { SingleCommentComponent } from './components/comment/single-comment/single-comment.component';
 
 
 @NgModule({
@@ -24,16 +27,18 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
     PostComponent,
     PostItemComponent,
     FooterComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    CommentsComponent,
+    SingleCommentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
-    ,MatCardModule,MatButtonToggleModule
+    ,MatCardModule,MatButtonToggleModule,HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

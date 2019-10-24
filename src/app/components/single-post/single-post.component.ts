@@ -18,4 +18,9 @@ export class SinglePostComponent implements OnInit {
     });
   }
 
+  updatePost(){
+    this.post.likes++;
+    this.postSerive.updatePost(this.post.id, this.post);
+  }
+
 }

@@ -7,14 +7,19 @@
         <p>{{post.description}}</p>
     </mat-card-content>
     <div class="category-wrapper">
-        <span class = "spacer"></span>
+        <span class="spacer"></span>
         <div *ngFor="let cat of post.category " class="category">
             <a>{{cat}}</a>
         </div>
     </div>
     <mat-card-actions id="action">
-        <span class = "spacer"></span>
-        <button mat-button>LIKE</button>
+        <span class="spacer"></span>
+        <button mat-button id = "like" class = "blue-neon-font" (click) = "updatePost()">LIKE</button>
+        <div class="likes blue-neon-font">{{post.likes}}
+                <p *ngIf="post.likes.length > 1">Likes</p>
+                <p *ngIf="post.likes.length == 1">Like</p>
+            </div>
         <button mat-button>SHARE</button>
     </mat-card-actions>
 </mat-card>
+<app-comments></app-comments>
