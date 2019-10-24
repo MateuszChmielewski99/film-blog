@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatButtonToggleModule} from '@angular/material';
 import { MainNavComponent } from './components/layout/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -15,6 +15,7 @@ import { PostComponent } from './components/post/post.component';
 import { PostItemComponent } from './components/post-item/post-item.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
     AppRoutingModule,
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
+    ,MatCardModule,MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

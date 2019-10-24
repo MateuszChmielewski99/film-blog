@@ -1,2 +1,20 @@
-<h1>{{post.title}}</h1>
-<h3>{{post.description}}</h3>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>{{post.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="post.pictureUrl" alt="Piękne zdjęcie ">
+    <mat-card-content id="content">
+        <p>{{post.description}}</p>
+    </mat-card-content>
+    <div class="category-wrapper">
+        <span class = "spacer"></span>
+        <div *ngFor="let cat of post.category " class="category">
+            <a>{{cat}}</a>
+        </div>
+    </div>
+    <mat-card-actions id="action">
+        <span class = "spacer"></span>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>
