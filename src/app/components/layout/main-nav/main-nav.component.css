@@ -53,4 +53,11 @@ mat-toolbar-row a{
   color: white;
 }
 
+.categories{
+  border-bottom: none;
+  color: black;
+  margin: 5px;
+  padding: 2px;
+}
+
 

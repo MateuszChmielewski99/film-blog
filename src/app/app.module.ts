@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatButtonToggleModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatButtonToggleModule, MatSelectModule} from '@angular/material';
 import { MainNavComponent } from './components/layout/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -36,7 +36,7 @@ import { SingleCommentComponent } from './components/comment/single-comment/sing
     AppRoutingModule,
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
-    ,MatCardModule,MatButtonToggleModule,HttpClientModule
+    ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

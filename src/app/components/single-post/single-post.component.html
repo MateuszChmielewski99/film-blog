@@ -14,11 +14,8 @@
     </div>
     <mat-card-actions id="action">
         <span class="spacer"></span>
-        <button mat-button id = "like" class = "blue-neon-font" (click) = "updatePost()">LIKE</button>
-        <div class="likes blue-neon-font">{{post.likes}}
-                <p *ngIf="post.likes.length > 1">Likes</p>
-                <p *ngIf="post.likes.length == 1">Like</p>
-            </div>
+        <button mat-raised-button id="like" class="blue-neon-font" (click)="updatePost()">LIKE</button>
+        <span class="likes blue-neon-font">{{post.likes}}</span>
         <button mat-button>SHARE</button>
     </mat-card-actions>
 </mat-card>

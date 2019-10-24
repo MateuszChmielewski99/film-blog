@@ -44,11 +44,13 @@ mat-card-actions {
 
 .likes {
     padding: 8px 5px;
-    margin: 0px 2px 0px 0px;
+    margin: 3px 2px 3px 3px;
 }
 
 #like {
-    margin-right: 0px;
+    margin-right: 3px;
+    border: royalblue;
+    box-shadow:1px 1px skyblue;
 }
 
 .blue-neon-font {
