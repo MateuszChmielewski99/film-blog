@@ -60,4 +60,8 @@ mat-toolbar-row a{
   padding: 2px;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
 

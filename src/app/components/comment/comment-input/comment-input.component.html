@@ -1,0 +1,15 @@
+<form>
+
+    <mat-form-field>
+        <span class="spacer"></span>
+        <textarea matInput ngModel class="form-control" minlength="3" maxlength="5" placeholder="Twój komentarz"
+            name="comment" #comment="ngModel"></textarea>
+        <mat-hint [align]="end">{{comment.value?.length || 0}}/5</mat-hint>
+    </mat-form-field>
+
+    <div class="alert alert-danger" *ngIf="comment.touched && !comment.valid ">
+        <div *ngIf="comment.errors.minlength"> Komentarz jest za krótki </div>
+    </div>
+    <button class="btn btn-primary" id="addBtn"> Dodaj </button>
+
+</form>
