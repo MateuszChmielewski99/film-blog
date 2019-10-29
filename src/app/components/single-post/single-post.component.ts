@@ -14,7 +14,9 @@ export class SinglePostComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.post = this.postSerive.getById(+params.get("id"))
+      this.postSerive.getById(+params.get("id")).subscribe(s => {
+        this.post = s;
+      })
     });
   }
 
