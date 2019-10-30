@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 
 export class PostService {
 
- private url:string = 'http://localhost:8080/post';
+ private url:string = 'http://localhost:8000/post';
 
   constructor(private client:HttpClient) { }
 
