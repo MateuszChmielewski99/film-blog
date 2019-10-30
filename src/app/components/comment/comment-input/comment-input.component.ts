@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import {Comment} from '../../../models/comment';
 
 @Component({
   selector: 'app-comment-input',
@@ -7,15 +8,20 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./comment-input.component.css']
 })
 export class CommentInputComponent implements OnInit {
-
-  constructor() { }
-  log(x){console.log(x);}
-
-  validateMaxLength(x:NgModel):boolean{
-    return x.value.length == 5;
+  public comment:Comment = new Comment();
+  public isNotBodyEmpty:boolean = false;
+  public isNameNotEmpty:boolean = false;
+  
+  constructor() {  }
+  
+  setBodyExists():void{
+    this.isNotBodyEmpty = true; 
   }
 
-  ngOnInit() {
+   setIsNameNotEmpty():void{
+    this.isNameNotEmpty = true;
   }
+
+  ngOnInit() { }
 
 }
