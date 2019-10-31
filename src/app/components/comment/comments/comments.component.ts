@@ -17,4 +17,8 @@ export class CommentsComponent implements OnInit {
      });
   }
 
+  commentSubmitedEventFired(comment:Comment):void{
+    console.log(comment);
+    this.comments.push(comment);
+  }
 }

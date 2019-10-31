@@ -18,7 +18,7 @@ import { CommentsComponent } from './components/comment/comments/comments.compon
 import {HttpClientModule} from '@angular/common/http';
 import { SingleCommentComponent } from './components/comment/single-comment/single-comment.component';
 import { CommentInputComponent } from './components/comment/comment-input/comment-input.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -32,14 +32,15 @@ import { FormsModule } from '@angular/forms';
     SinglePostComponent,
     CommentsComponent,
     SingleCommentComponent,
-    CommentInputComponent
+    CommentInputComponent, 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
-    ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule,FormsModule,MatFormFieldModule,MatInputModule
+    ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule,FormsModule,MatFormFieldModule,MatInputModule,
+    ReactiveFormsModule 
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
