@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Comment } from '../../../models/comment';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { CommentService } from 'src/app/services/comment.service';
 
 
 @Component({
@@ -10,12 +11,11 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 })
 export class CommentInputComponent implements OnInit {
   public comment: Comment = new Comment();
-  public isNotBodyEmpty: boolean = false;
-  public isNameNotEmpty: boolean = false;
-  email = new FormControl('', [Validators.required, Validators.email])
-  @Output() commentSubmited:EventEmitter<any> = new EventEmitter()
 
-  constructor() { }
+  email = new FormControl('', [Validators.required, Validators.email])
+  @Output() commentSubmited: EventEmitter<any> = new EventEmitter()
+
+  constructor(private commentService: CommentService) { }
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'To pole nie może być puste' :
@@ -23,9 +23,12 @@ export class CommentInputComponent implements OnInit {
         '';
   }
 
-  submitComment(){
-    this.comment.email = this.email.value;
-    this.commentSubmited.emit(this.comment);
+  submitComment() {
+    if (this.email.valid) {
+      this.comment.email = this.email.value;
+      this.commentService.addComent(this.comment).subscribe();
+    }
+
   }
 
   ngOnInit() { }

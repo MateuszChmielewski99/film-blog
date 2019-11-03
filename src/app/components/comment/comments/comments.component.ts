@@ -8,17 +8,12 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentsComponent implements OnInit {
 
-  constructor(private commentService:CommentService) { }
-  comments:Comment[];
+  constructor(private commentService: CommentService) { }
+  comments: Comment[];
 
   ngOnInit() {
-     this.commentService.getComments().subscribe(comment => {
-       this.comments = comment.map(x => Object.assign(new Comment(),x));
-     });
-  }
-
-  commentSubmitedEventFired(comment:Comment):void{
-    console.log(comment);
-    this.comments.push(comment);
+    this.commentService.getComments().subscribe(comment => {
+      this.comments = comment.map(x => Object.assign(new Comment(), x));
+    });
   }
 }

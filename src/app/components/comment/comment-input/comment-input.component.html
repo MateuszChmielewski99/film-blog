@@ -9,11 +9,11 @@
 
     <mat-form-field *ngIf='comment.body != "" '>
         <textarea matInput ngModel class="form-control" minlength="3" maxlength="16" placeholder="Twój nick" name="nick"
-            #nick="ngModel" [(ngModel)]="comment.name"></textarea>
+            #nick="ngModel" [(ngModel)]="comment.nickname"></textarea>
         <mat-hint [align]="end">{{nick.value?.length || 0}}/16</mat-hint>
     </mat-form-field>
 
-    <mat-form-field *ngIf='comment.name != "" '>
+    <mat-form-field *ngIf='comment.nickname != "" '>
         <textarea matInput class="form-control" minlength="3" maxlength="32" placeholder="Twój email"
              required [formControl]="email"></textarea>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
