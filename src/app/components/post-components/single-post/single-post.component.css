@@ -57,3 +57,7 @@ mat-card-actions {
     color: royalblue;
     text-shadow: 1px 1px skyblue;
 }
+
+#post-container{
+    margin-bottom: 10rem;
+}

@@ -1,4 +1,4 @@
-<form (ngSubmit) = "submitComment()">
+<form (ngSubmit)="submitComment()" >
 
     <mat-form-field>
         <span class="spacer"></span>
@@ -14,16 +14,13 @@
     </mat-form-field>
 
     <mat-form-field *ngIf='comment.nickname != "" '>
-        <textarea matInput class="form-control" minlength="3" maxlength="32" placeholder="Twój email"
-             required [formControl]="email"></textarea>
+        <textarea matInput class="form-control" minlength="3" maxlength="32" placeholder="Twój email" required
+            [formControl]="email"></textarea>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
+    <div #recaptcha name="grecaptcha" [style.display]="email.valid ? 'inherit' : 'none'"></div>
 
-    <div class="alert alert-danger" *ngIf="comment.touched && !comment.valid ">
-        <div *ngIf="comment.errors.minlength"> Komentarz jest za krótki </div>
-    </div>
-
-    <button type = "submit" class="btn btn-primary" id="addBtn"> Dodaj </button>
+    <button type="submit" class="btn btn-primary" id="addBtn"> Dodaj </button>
 
 </form>

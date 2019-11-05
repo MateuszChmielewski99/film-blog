@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { PostService } from 'src/app/services/post.service';
+import { PageEvent, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-post',
@@ -9,14 +10,18 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostComponent implements OnInit {
 
-  posts:Post[];
-
-  constructor(private postService:PostService) { }
+  posts: Post[];
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
     this.postService.getAll().subscribe(s => {
       this.posts = s;
     });
+  }
+
+  getData(event: PageEvent) {
+    this.postService.getAllInPage(event.pageIndex * event.pageSize, event.pageSize)
+      .subscribe(s => this.posts = s);
   }
 
 }

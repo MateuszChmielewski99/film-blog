@@ -17,7 +17,11 @@ export class PostService {
   constructor(private client:HttpClient) { }
 
   getAll():Observable<Post[]>{
-    return this.client.get<Post[]>(this.url);
+    return this.client.get<Post[]>(this.url + "/page");
+  }
+
+  getAllInPage(begin:number, amountPerPage:number):Observable<Post[]>{
+    return this.client.get<Post[]>(this.url + "/page?start=" + begin + "&limit=" + amountPerPage);
   }
 
   getById(id: number) {

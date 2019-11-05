@@ -5,11 +5,14 @@
   float: left;
   margin: 10px;
   position: relative;
-  transition: 0.2s;
+  /* transition: 0.2s; */
   box-shadow: 3px 3px 5px 6px #ccc;
   cursor: pointer;
+  margin: 15px;
 }
-
+.post-item-template:hover{
+  margin: 10px;
+}
 .post-item-template:hover {
   height: 310px;
   width: 410px;
