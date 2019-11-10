@@ -11,8 +11,8 @@ export class CommentService {
   private url: string = 'http://localhost:8000/comments'
   constructor(private client: HttpClient) { }
 
-  addComent(comment:CommentDto):Observable<any>{
-    return this.client.post<CommentDto>(this.url, comment);
+  addComent(comment:Comment):Observable<any>{
+    return this.client.post<Comment>(this.url, comment);
   }
 
   getComments(postId:number): Observable<Comment[]> {

@@ -20,7 +20,7 @@ export class CommentInputComponent implements OnInit {
 
   }
 
-  constructor(private commentService: CommentService, private render: Renderer2) { }
+  constructor(private commentService: CommentService) { }
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'To pole nie może być puste' :
@@ -31,7 +31,7 @@ export class CommentInputComponent implements OnInit {
   submitComment() {
     if (this.email.valid) {
       this.comment.email = this.email.value;
-
+      this.commentService.addComent(this.comment);
       this.email.setValue("");
       this.comment.body = "";
       this.comment.nickname = "";
