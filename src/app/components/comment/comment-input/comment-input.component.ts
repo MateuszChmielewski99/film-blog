@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Rendere
 import { Comment } from '../../../models/comment';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
-import { CommentDto } from 'src/app/models/comment-dto';
+
 
 
 @Component({
