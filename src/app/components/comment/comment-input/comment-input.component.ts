@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Comment } from '../../../models/comment';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
@@ -12,14 +12,18 @@ import { CommentDto } from 'src/app/models/comment-dto';
 })
 export class CommentInputComponent implements OnInit {
   public comment: Comment = new Comment();
+  public isCaptchaValid: false;
+  
 
   email = new FormControl('', [Validators.required, Validators.email])
   @ViewChild('recaptcha', { static: true }) recaptchaElement: ElementRef;
   captchaResponse: string;
 
-  ngOnInit() { this.addRecaptchaScript(); }
+  ngOnInit() {
+    this.addRecaptchaScript();  
+  }
 
-  constructor(private commentService: CommentService) { }
+  constructor(private commentService: CommentService, private render: Renderer2) { }
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'To pole nie może być puste' :
@@ -30,14 +34,21 @@ export class CommentInputComponent implements OnInit {
   submitComment() {
     if (this.email.valid) {
       this.comment.email = this.email.value;
-      this.commentService.addComent(new CommentDto(this.comment, this.captchaResponse)).subscribe();
-      console.log(JSON.stringify(new CommentDto(this.comment, this.captchaResponse)));
+
       this.email.setValue("");
       this.comment.body = "";
       this.comment.nickname = "";
-      window['grecaptcha'].reset(); 
+      window['grecaptcha'].reset();
     }
 
+  }
+
+  verifyReCaptch() {
+    let responseObj: any = { captchaResponse: this.captchaResponse }
+    this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
+      this.isCaptchaValid = res;
+      console.log(this.isCaptchaValid);
+    });
   }
 
   renderReCaptch() {

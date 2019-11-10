@@ -20,7 +20,7 @@ import { SingleCommentComponent } from './components/comment/single-comment/sing
 import { CommentInputComponent } from './components/comment/comment-input/comment-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
     ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule,FormsModule,MatFormFieldModule,MatInputModule,
-    ReactiveFormsModule,MatPaginatorModule
+    ReactiveFormsModule,MatPaginatorModule,RecaptchaModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
