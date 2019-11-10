@@ -13,14 +13,11 @@ import { CommentDto } from 'src/app/models/comment-dto';
 export class CommentInputComponent implements OnInit {
   public comment: Comment = new Comment();
   public isCaptchaValid: false;
-  
-
   email = new FormControl('', [Validators.required, Validators.email])
-  @ViewChild('recaptcha', { static: true }) recaptchaElement: ElementRef;
   captchaResponse: string;
 
   ngOnInit() {
-    this.addRecaptchaScript();  
+
   }
 
   constructor(private commentService: CommentService, private render: Renderer2) { }
@@ -38,41 +35,17 @@ export class CommentInputComponent implements OnInit {
       this.email.setValue("");
       this.comment.body = "";
       this.comment.nickname = "";
-      window['grecaptcha'].reset();
+      this.isCaptchaValid = false;
     }
 
   }
 
-  verifyReCaptch() {
-    let responseObj: any = { captchaResponse: this.captchaResponse }
+  verifyReCaptch(captchaResponse: string) {
+    let responseObj: any = { captchaResponse: captchaResponse }
     this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
       this.isCaptchaValid = res;
-      console.log(this.isCaptchaValid);
     });
   }
 
-  renderReCaptch() {
-    window['grecaptcha'].render(this.recaptchaElement.nativeElement, {
-      'sitekey': '6LcyCMEUAAAAAAMDPT0sHesqaldkxCOdqibYCGsf',
-      'callback': (response) => {
-        this.captchaResponse = response;
-      }
-    });
-  }
 
-  addRecaptchaScript() {
-
-    window['grecaptchaCallback'] = () => {
-      this.renderReCaptch();
-    }
-
-    (function (d, s, id, obj) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) { obj.renderReCaptch(); return; }
-      js = d.createElement(s); js.id = id;
-      js.src = "https://www.google.com/recaptcha/api.js?onload=grecaptchaCallback&amp;render=explicit";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'recaptcha-jssdk', this));
-
-  }
 }
