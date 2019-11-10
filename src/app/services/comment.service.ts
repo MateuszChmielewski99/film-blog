@@ -8,7 +8,7 @@ import { CommentDto } from '../models/comment-dto';
   providedIn: 'root'
 })
 export class CommentService {
-  private url: string = 'http://localhost:8000/comment'
+  private url: string = 'https://us-central1-foodblogcloudeapi.cloudfunctions.net/api/comments'
   constructor(private client: HttpClient) { }
 
   addComent(comment:CommentDto):Observable<any>{
