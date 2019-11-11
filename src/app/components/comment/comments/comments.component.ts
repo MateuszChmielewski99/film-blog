@@ -12,13 +12,15 @@ export class CommentsComponent implements OnInit {
 
   constructor(private commentService: CommentService, private route: ActivatedRoute) { }
   comments: Comment[];
-  postId: number;
+  postId: string;
 
   ngOnInit() {
-    this.postId = Number.parseInt(this.route.snapshot.url[1].path);
+    this.postId = this.route.snapshot.url[1].path;
 
     this.commentService.getComments(this.postId).subscribe(comment => {
+      if(comment){
       this.comments = comment.map(x => Object.assign(new Comment(), x));
+      }
     });
   }
 }

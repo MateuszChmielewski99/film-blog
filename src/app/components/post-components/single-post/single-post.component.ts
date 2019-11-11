@@ -14,14 +14,15 @@ export class SinglePostComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.postSerive.getById(+params.get("id")).subscribe(s => {
-        this.post = s;
+      this.postSerive.getById(params.get("id")).subscribe(s => {
+        if (s) {
+          this.post = s;
+        }
       })
     });
   }
 
-  updatePost(){
-    this.post.likes++;
+  updatePost() {
     this.postSerive.updatePost(this.post.id, this.post);
   }
 

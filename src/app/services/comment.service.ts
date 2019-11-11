@@ -8,14 +8,14 @@ import {Comment} from '../models/comment';
   providedIn: 'root'
 })
 export class CommentService {
-  private url: string = 'http://localhost:8000/comments'
+  private url: string = 'http://localhost:5000/foodblogcloudeapi/us-central1/api/comments'
   constructor(private client: HttpClient) { }
 
   addComent(comment:Comment):Observable<any>{
     return this.client.post<Comment>(this.url, comment);
   }
 
-  getComments(postId:number): Observable<Comment[]> {
+  getComments(postId:string): Observable<Comment[]> {
     return this.client.get<Comment[]>(`${this.url}?postId=${postId}`);
   }
 

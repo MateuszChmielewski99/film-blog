@@ -12,19 +12,19 @@ import { Observable } from 'rxjs';
 
 export class PostService {
 
- private url:string = 'http://localhost:8000/post';
+ private url:string = 'http://localhost:5000/foodblogcloudeapi/us-central1/api/posts';
 
   constructor(private client:HttpClient) { }
 
   getAll():Observable<Post[]>{
-    return this.client.get<Post[]>(this.url + "/page");
+    return this.client.get<Post[]>(this.url);
   }
 
   getAllInPage(begin:number, amountPerPage:number):Observable<Post[]>{
     return this.client.get<Post[]>(this.url + "/page?start=" + begin + "&limit=" + amountPerPage);
   }
 
-  getById(id: number) {
+  getById(id: string) {
       return this.client.get<Post>(`${this.url}/${id}`);
   }
 

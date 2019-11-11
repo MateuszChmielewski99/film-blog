@@ -1,11 +1,16 @@
-
-export class Post {
-    id:number;
+import {firestore} from 'firebase';
+type PostData = {
     userId:number;
     title:string;
-    description:string;
+    description:Map<string,string>;
     pictureUrl?:string;
-    date:string;
-    category:string[];
-    likes:number
+    creationDate:string;
+    categories:string[];
+    ingridients:Map<string,string>;
 }
+
+export class Post {
+    id:string;
+    data:PostData;
+}
+

@@ -10,7 +10,7 @@ const routes: Routes = [
     component: PostComponent
   },
   {
-    path: 'post/:id',
+    path: 'posts/:id',
     component: SinglePostComponent
   }
 ];

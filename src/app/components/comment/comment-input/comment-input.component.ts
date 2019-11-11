@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import { Comment } from '../../../models/comment';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
+
 
 
 
@@ -15,6 +16,8 @@ export class CommentInputComponent implements OnInit {
   public isCaptchaValid: false;
   email = new FormControl('', [Validators.required, Validators.email])
   captchaResponse: string;
+  @Input() postId:string;
+  end:any;
 
   ngOnInit() {
 
@@ -31,6 +34,7 @@ export class CommentInputComponent implements OnInit {
   submitComment() {
     if (this.email.valid) {
       this.comment.email = this.email.value;
+      this.comment.postId = this.postId; 
       this.commentService.addComent(this.comment);
       this.email.setValue("");
       this.comment.body = "";
@@ -42,9 +46,11 @@ export class CommentInputComponent implements OnInit {
 
   verifyReCaptch(captchaResponse: string) {
     let responseObj: any = { captchaResponse: captchaResponse }
-    this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
-      this.isCaptchaValid = res;
-    });
+    console.log(captchaResponse);
+   this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
+     this.isCaptchaValid = res;
+     console.log(res);
+   });
   }
 
 

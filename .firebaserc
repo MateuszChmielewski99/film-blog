@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "foodblogcloudeapi"
+  },
+  "targets": {
+    "foodblogcloudeapi": {
+      "hosting": {
+        "test": [
+          "foodblogcloudeapi"
+        ]
+      }
+    }
+  }
+}

@@ -1,15 +1,24 @@
 <div id = "post-container">
     <mat-card>
         <mat-card-header>
-            <mat-card-title>{{post.title}}</mat-card-title>
+            <mat-card-title class = "title">{{post.data.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="post.pictureUrl" alt="Piękne zdjęcie ">
+        <img mat-card-image [src]="post.data.pictureUrl" alt="Piękne zdjęcie ">
         <mat-card-content id="content">
-            <p>{{post.description}}</p>
+            <p class = "sectionHeader">Składniki : </p> 
+            <p *ngFor="let item of post.data.ingridients | keyvalue">
+                {{item.key}}: {{item.value}}
+            </p>
+            <div *ngFor="let item of post.data.description | keyvalue">
+                <p class = "sectionHeader">{{item.key}}</p>
+                <p> 
+                    {{item.value}}
+                </p>
+            </div>
         </mat-card-content>
         <div class="category-wrapper">
             <span class="spacer"></span>
-            <div *ngFor="let cat of post.category " class="category">
+            <div *ngFor="let cat of post?.data.categories " class="category">
                 <a>{{cat}}</a>
             </div>
         </div>
@@ -20,6 +29,6 @@
             <button mat-button>SHARE</button>
         </mat-card-actions> -->
     </mat-card>
-    <app-comment-input></app-comment-input>
+    <app-comment-input [postId]="post.id"></app-comment-input>
     <app-comments></app-comments>
 </div>
