@@ -19,7 +19,7 @@
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
 
-    <re-captcha *ngIf = "email.valid" (resolved)="verifyReCaptch($event)" siteKey="6LcyCMEUAAAAAAMDPT0sHesqaldkxCOdqibYCGsf"></re-captcha>
+    <re-captcha *ngIf = "email.valid" (resolved)="verifyReCaptch($event)" [siteKey]="key"></re-captcha>
     <button *ngIf = "isCaptchaValid" type="submit" class="btn btn-primary" id="addBtn"> Dodaj </button>
 
 </form>

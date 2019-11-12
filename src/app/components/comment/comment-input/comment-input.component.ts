@@ -4,8 +4,6 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CommentService } from 'src/app/services/comment.service';
 
 
-
-
 @Component({
   selector: 'app-comment-input',
   templateUrl: './comment-input.component.html',
@@ -16,12 +14,12 @@ export class CommentInputComponent implements OnInit {
   public isCaptchaValid: false;
   email = new FormControl('', [Validators.required, Validators.email])
   captchaResponse: string;
-  @Input() postId:string;
-  end:any;
+  //public key:string = '6LcyCMEUAAAAAAMDPT0sHesqaldkxCOdqibYCGsf';
+  public key:string = '6LevKcIUAAAAAMLgzhaS5hIl-47qexd1jTSinLX5';
+  @Input() postId: string;
+  end: any;
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   constructor(private commentService: CommentService) { }
 
@@ -34,8 +32,8 @@ export class CommentInputComponent implements OnInit {
   submitComment() {
     if (this.email.valid) {
       this.comment.email = this.email.value;
-      this.comment.postId = this.postId; 
-      this.commentService.addComent(this.comment);
+      this.comment.postId = this.postId;
+      this.commentService.addComent(this.comment).subscribe();
       this.email.setValue("");
       this.comment.body = "";
       this.comment.nickname = "";
@@ -47,10 +45,10 @@ export class CommentInputComponent implements OnInit {
   verifyReCaptch(captchaResponse: string) {
     let responseObj: any = { captchaResponse: captchaResponse }
     console.log(captchaResponse);
-   this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
-     this.isCaptchaValid = res;
-     console.log(res);
-   });
+    this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
+      this.isCaptchaValid = res;
+      console.log(this.isCaptchaValid);
+    });
   }
 
 

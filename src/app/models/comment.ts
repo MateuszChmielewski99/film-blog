@@ -13,6 +13,12 @@ export class Comment {
         this.nickname = "";
         this.email = "";
         this.body = "";
-        this.creationDate = Date.now.toString();
+        this.creationDate = this.getDate();
     }
+
+    private getDate():string{
+        let date = new Date();
+        return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
+    }
+
 }
