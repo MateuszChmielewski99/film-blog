@@ -1,0 +1,24 @@
+.title {
+    margin:15px;
+    text-align: center;
+    font-size: 30px;
+}
+.registration-card{
+    margin-top:50px;
+}
+
+#registration-form{
+    margin-left:auto;
+    margin-right:auto;
+}
+@media only screen and (max-height: 850px) {
+    .title {
+        font-size: 15px;
+    }
+    .registration-card{
+        margin-top:20px;
+    }
+}
+
+
+

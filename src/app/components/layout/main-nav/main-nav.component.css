@@ -15,53 +15,61 @@
   top: 0;
   z-index: 1;
 }
-.title{
+
+.title {
   font-size: 35px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
+@media only screen and (max-width: 850px) {
+  .title {
+    font-size: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
-
-.rej-and-logon{
+.rej-and-logon {
   padding: 5px;
   text-decoration: none;
   text-align: right;
   color: white;
 }
 
-.rej-and-logon:hover{
+.rej-and-logon:hover {
   color: purple;
 }
 
-mat-toolbar-row a{
+mat-toolbar-row a {
   text-decoration: none;
   color: white;
 }
-.spacer{
-  flex:1 1 auto;
+
+.spacer {
+  flex: 1 1 auto;
 }
 
-.toolbar{
+.toolbar {
   background: url(src\assets\pineapple-512.png) left no-repeat;
-   /* background-color: #9C27B0; */
-   background-color: #9C27B0;
+  /* background-color: #9C27B0; */
+  background-color: #9C27B0;
 }
 
-.burger-icon{
+.burger-icon {
   color: white;
 }
 
-.categories{
+.categories {
   border-bottom: none;
   color: black;
   margin: 5px;
   padding: 2px;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
-
