@@ -24,7 +24,7 @@ export class CommentService {
   }
 
   getCaptchaValidataion(response): Observable<any> {
-    return this.client.post<any>(`${this.url}/captcha`, response);
+    return this.client.get<any>(`${this.url}/captcha?captchaResponse=${response}`);
   }
 
 

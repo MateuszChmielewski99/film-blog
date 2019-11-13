@@ -43,9 +43,8 @@ export class CommentInputComponent implements OnInit {
   }
 
   verifyReCaptch(captchaResponse: string) {
-    let responseObj: any = { captchaResponse: captchaResponse }
     console.log(captchaResponse);
-    this.commentService.getCaptchaValidataion(responseObj).subscribe(res => {
+    this.commentService.getCaptchaValidataion(captchaResponse).subscribe(res => {
       this.isCaptchaValid = res;
       console.log(this.isCaptchaValid);
     });
