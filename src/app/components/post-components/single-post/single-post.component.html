@@ -3,14 +3,14 @@
         <mat-card-header>
             <mat-card-title class = "title">{{post.data.title}}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="post.data.pictureUrl" alt="Piękne zdjęcie ">
+        <img mat-card-image [src]="post.data.pictureUrl" alt="Piękne zdjęcie jedzenia" title="zdjęcie dania">
         <mat-card-content id="content">
             <p class = "sectionHeader">Składniki : </p> 
             <p *ngFor="let item of post.data.ingridients | keyvalue">
                 {{item.key}}: {{item.value}}
             </p>
             <div *ngFor="let item of post.data.description | keyvalue">
-                <p class = "sectionHeader">{{item.key}}</p>
+                <p class = "sectionHeader"><strong>{{item.key}}</strong></p>
                 <p> 
                     {{item.value}}
                 </p>
