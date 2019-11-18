@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { BlackjackComponent } from './components/game/blackjack/blackjack.component';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     CommentsComponent,
     SingleCommentComponent,
     CommentInputComponent,
-    RegisterPageComponent, 
+    BlackjackComponent,
+    CommentInputComponent,
+    RegisterPageComponent,
   ],
   imports: [
     BrowserModule,
