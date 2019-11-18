@@ -8,6 +8,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 })
 export class RegisterPageComponent implements OnInit {
   registerGroup: FormGroup;
+  hide:any;
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
