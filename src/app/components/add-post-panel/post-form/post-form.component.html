@@ -7,13 +7,13 @@
                 </mat-form-field>
             </div>
             <ckeditor [editor]="Editor"
-                [config]="{ toolbar: [ '|', 'bold', 'italic', 'bulletedList','numberedList','undo','redo' ] }"
+                [config]="{ toolbar: [ 'heading','|', 'bold', 'italic', 'bulletedList','numberedList','undo','redo' ] }"
                 (change)="onChange($event)"></ckeditor>
             <div>
                 <mat-form-field>
                     <mat-label>Kategorie</mat-label>
-                    <mat-select [(ngModel)]="postToAdd.data.categories" name="category" multiple (selectionChange) = "tmp($event)">
-                        <mat-option *ngFor="let category of categories | async" [value]="category">
+                    <mat-select [(ngModel)]="postToAdd.data.categories" name="category" multiple>
+                        <mat-option *ngFor="let category of categories" [value]="category">
                             {{category}}
                         </mat-option>
                     </mat-select>
@@ -22,10 +22,22 @@
             <div class="input-container">
                 <mat-form-field>
                     <mat-label>Brak kategorii ? Dopisz własną!</mat-label>
-                    <input matInput placeholder="Nowa kategoria" maxlength="32">
+                    <input matInput placeholder="Nowa kategoria" maxlength="32" #customCategory
+                        (blur)="checkSimilarity(customCategory.value)" 
+                        (focus)="emptyPossibleCategoriesArray()">
                 </mat-form-field>
-                <app-category-button  *ngFor="let item of postToAdd.data.categories" [category]="item">
+                <app-category-button *ngFor="let item of postToAdd.data.categories" [category]="item"
+                    (removeItem)="removeCategory($event)">
                 </app-category-button>
+            </div>
+            <div *ngIf="possibleCategories.length > 0" class = "possible-cat-wrapper">
+                <p>Czy jesteś pewny/a ? Do twojej kategorii podobne są: </p>
+                <ul>
+                <li *ngFor = "let item of possibleCategories">
+                    {{item}}
+                </li>
+            </ul>
+                <button type="button" class = "agree-button">Tak</button>
             </div>
             <button type="submit" (click)="onSubmit()">OK</button>
         </form>

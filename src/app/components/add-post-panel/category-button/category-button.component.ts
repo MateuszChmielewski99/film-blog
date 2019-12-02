@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, HostListener } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-category-button',
@@ -8,10 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CategoryButtonComponent implements OnInit {
 
   @Input() category:string;
-  
-  constructor() { }
+ @Output() removeItem:EventEmitter<string> = new EventEmitter<string>();
 
+  constructor() { }
   ngOnInit() {
+  }
+
+  @HostListener('click') onClick(){
+    this.removeItem.emit(this.category);
   }
 
 }

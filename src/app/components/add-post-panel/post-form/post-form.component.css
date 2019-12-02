@@ -1,3 +1,11 @@
 .container{
     width: 90%;
 }
+
+button{
+    margin-top: 20px;
+}
+
+.possible-cat-wrapper{
+    margin-top: 15px;
+}

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Post } from 'src/app/models/post';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
-import { PostComponent } from '../../post-components/post/post.component';
-import { of } from 'rxjs';
+import { CategoriesService } from 'src/app/services/categories.service';
+
 
 // TODO data structure!
 @Component({
@@ -14,27 +14,39 @@ import { of } from 'rxjs';
 })
 export class PostFormComponent implements OnInit {
   public Editor = ClassicEditor;
-  public selectedCategory:string = "penis";
-  public categories = of(["category1","category2"]);
+  public selectedCategory: string = "penis";
+  public categories: string[];
+  public possibleCategories: string[] = [];
+  public isUserSure:boolean = false;
   public postToAdd: Post = {
     data: {
-      userId:-1,
-      title:"",
-      description:"",
-      pictureUrl:"",
-      creationDate:Date.now().toString(),
+      userId: -1,
+      title: "",
+      description: "",
+      pictureUrl: "",
+      creationDate: Date.now().toString(),
       categories: [],
     }
   };
 
   public postForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private postService: PostService) { }
+  constructor(private formBuilder: FormBuilder, private postService: PostService, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
     this.postForm = this.formBuilder.group({
       title: ['', [Validators.required]],
-      customCategory: ['',[Validators.maxLength]]
+      customCategory: ['', [Validators.maxLength]]
+    });
+
+    this.categoriesService.getAll().subscribe(categories => {
+      if (categories) {
+        this.categories = categories;
+      }
+      error => {
+        console.error(error);
+      }
+      
     });
   }
 
@@ -45,11 +57,37 @@ export class PostFormComponent implements OnInit {
   public onSubmit() {
     this.postToAdd.data.creationDate = Date.now().toString();
     this.postToAdd.data.title = this.postForm.get('title').value;
+    if(this.possibleCategories.length > 0 || this.isUserSure)
     console.log(this.postToAdd.data);
   }
 
-  public tmp({value}){
-    console.log(value);
+  public removeCategory(categoryToRemove) {
+    this.postToAdd.data.categories = this.postToAdd.data.categories.filter(s => s !== categoryToRemove);
   }
+
+  checkSimilarity(data) {
+    for(let i = 0; i < this.categories.length; i++){
+      if (this.diceCoefficient(this.categories[i], data) >= 0.85) {
+        this.possibleCategories.push(this.categories[i]);
+      }
+    }
+
+    console.log(this.possibleCategories);
+  }
+
+  emptyPossibleCategoriesArray(){
+    this.possibleCategories = [];
+  }
+
+  private diceCoefficient(arg1: string, arg2: string) {
+    const [...first] = arg1;
+    const [...second] = arg2;
+
+    let intersection = first.filter(value =>
+      second.includes(value));
+    console.log(2 * intersection.length / (first.length + second.length));
+    return (2 * intersection.length / (first.length + second.length));
+  }
+
 
 }
