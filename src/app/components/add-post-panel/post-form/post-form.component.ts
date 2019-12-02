@@ -5,8 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
 import { CategoriesService } from 'src/app/services/categories.service';
 
-
-// TODO data structure!
 @Component({
   selector: 'app-post-form',
   templateUrl: './post-form.component.html',
@@ -17,7 +15,7 @@ export class PostFormComponent implements OnInit {
   public selectedCategory: string = "penis";
   public categories: string[];
   public possibleCategories: string[] = [];
-  public isUserSure:boolean = false;
+  public isUserSure: boolean = false;
   public postToAdd: Post = {
     data: {
       userId: -1,
@@ -46,7 +44,7 @@ export class PostFormComponent implements OnInit {
       error => {
         console.error(error);
       }
-      
+
     });
   }
 
@@ -57,25 +55,31 @@ export class PostFormComponent implements OnInit {
   public onSubmit() {
     this.postToAdd.data.creationDate = Date.now().toString();
     this.postToAdd.data.title = this.postForm.get('title').value;
-    if(this.possibleCategories.length > 0 || this.isUserSure)
-    console.log(this.postToAdd.data);
+    if (this.possibleCategories.length > 0 || this.isUserSure) {
+      if (this.postToAdd.data.categories.length > 0 && this.postToAdd.data.description && this.postToAdd.data.title) {
+        this.postService.addPost(this.postToAdd).subscribe(s => console.log(s));
+      }
+    }
+  }
+
+  onUserEnsured() {
+    this.isUserSure = true;
+    this.onSubmit();
   }
 
   public removeCategory(categoryToRemove) {
     this.postToAdd.data.categories = this.postToAdd.data.categories.filter(s => s !== categoryToRemove);
   }
 
-  checkSimilarity(data) {
-    for(let i = 0; i < this.categories.length; i++){
+  public checkSimilarity(data) {
+    for (let i = 0; i < this.categories.length; i++) {
       if (this.diceCoefficient(this.categories[i], data) >= 0.85) {
         this.possibleCategories.push(this.categories[i]);
       }
     }
-
-    console.log(this.possibleCategories);
   }
 
-  emptyPossibleCategoriesArray(){
+  public emptyPossibleCategoriesArray() {
     this.possibleCategories = [];
   }
 
@@ -83,11 +87,8 @@ export class PostFormComponent implements OnInit {
     const [...first] = arg1;
     const [...second] = arg2;
 
-    let intersection = first.filter(value =>
-      second.includes(value));
-    console.log(2 * intersection.length / (first.length + second.length));
+    let intersection = first.filter(value => second.includes(value));
+
     return (2 * intersection.length / (first.length + second.length));
   }
-
-
 }

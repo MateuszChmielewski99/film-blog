@@ -23,21 +23,20 @@
                 <mat-form-field>
                     <mat-label>Brak kategorii ? Dopisz własną!</mat-label>
                     <input matInput placeholder="Nowa kategoria" maxlength="32" #customCategory
-                        (blur)="checkSimilarity(customCategory.value)" 
-                        (focus)="emptyPossibleCategoriesArray()">
+                        (blur)="checkSimilarity(customCategory.value)" (focus)="emptyPossibleCategoriesArray()">
                 </mat-form-field>
                 <app-category-button *ngFor="let item of postToAdd.data.categories" [category]="item"
                     (removeItem)="removeCategory($event)">
                 </app-category-button>
             </div>
-            <div *ngIf="possibleCategories.length > 0" class = "possible-cat-wrapper">
+            <div *ngIf="possibleCategories.length > 0" class="possible-cat-wrapper">
                 <p>Czy jesteś pewny/a ? Do twojej kategorii podobne są: </p>
                 <ul>
-                <li *ngFor = "let item of possibleCategories">
-                    {{item}}
-                </li>
-            </ul>
-                <button type="button" class = "agree-button">Tak</button>
+                    <li *ngFor="let item of possibleCategories">
+                        {{item}}
+                    </li>
+                </ul>
+                <button type="button" class="agree-button" (click)="onUserEnsured()">Tak</button>
             </div>
             <button type="submit" (click)="onSubmit()">OK</button>
         </form>
