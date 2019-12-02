@@ -13,9 +13,9 @@
           <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 5 </a></mat-option>
         </mat-select>
       </mat-form-field>
+      <a mat-list-item [routerLink]="['/posts/add']" routerLinkActive="router-link-active" (click)="drawer.close()"> Dodaj nowy post </a>
       <a mat-list-item href="#">Archiwum</a>
       <a mat-list-item href="#">O mnie</a>
-      <a mat-list-tem href="/game"> Gra </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

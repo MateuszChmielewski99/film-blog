@@ -1,11 +1,11 @@
 type PostData = {
     userId:number;
     title:string;
-    description:Map<string,string>;
+    description:string;
     pictureUrl?:string;
     creationDate:string;
+    updatedAt?:string;
     categories:string[];
-    ingridients:Map<string,string>;
 }
 
 export interface Post {

@@ -1,0 +1,25 @@
+<div class="container">
+    <mat-card>
+        <form>
+            <label [formGroup]="postForm">
+                <mat-form-field>
+                    <input matInput formControlName="title" placeholder="Tytuł">
+                </mat-form-field>
+            </label>
+            <ckeditor [editor]="Editor"
+                [config]="{ toolbar: [ '|', 'bold', 'italic', 'bulletedList','numberedList','undo','redo' ] }"
+                (change)="onChange($event)"></ckeditor>
+            <div>
+                <mat-form-field>
+                    <mat-label>Kategorie</mat-label>
+                    <mat-select [(value)]="selectedCategory">
+                        <mat-option *ngFor="let category of categories | async">
+                            {{category}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <button type="submit" (click)="onSubmit()">OK</button>
+        </form>
+    </mat-card>
+</div>

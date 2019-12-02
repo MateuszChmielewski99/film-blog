@@ -22,8 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
-import { BlackjackComponent } from './components/game/blackjack/blackjack.component';
-
+import { PostFormComponent } from './components/add-post-panel/post-form/post-form.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -36,9 +36,9 @@ import { BlackjackComponent } from './components/game/blackjack/blackjack.compon
     CommentsComponent,
     SingleCommentComponent,
     CommentInputComponent,
-    BlackjackComponent,
     CommentInputComponent,
     RegisterPageComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +46,7 @@ import { BlackjackComponent } from './components/game/blackjack/blackjack.compon
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
     ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule,FormsModule,MatFormFieldModule,MatInputModule,
-    ReactiveFormsModule,MatPaginatorModule,RecaptchaModule
+    ReactiveFormsModule,MatPaginatorModule,RecaptchaModule,CKEditorModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

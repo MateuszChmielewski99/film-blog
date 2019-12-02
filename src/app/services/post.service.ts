@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 import { HttpClient } from '@angular/common/http';;
 import { Observable } from 'rxjs';
-
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,8 @@ import { Observable } from 'rxjs';
 
 
 export class PostService {
-
-   private url:string = 'https://us-central1-foodblogcloudeapi.cloudfunctions.net/api/posts';
- // private url: string = 'http://localhost:5000/foodblogcloudeapi/us-central1/api/posts'
+  
+ private url:string = environment.apiUrl+"/posts";
   constructor(private client: HttpClient) { }
 
   getAll(): Observable<Post[]> {
@@ -30,5 +29,9 @@ export class PostService {
 
   updatePost(postId, updatedPost) {
 
+  }
+
+  addPost(post:Post):Observable<Post>{
+    return this.client.post<Post>(`${this.url}`,post);
   }
 }

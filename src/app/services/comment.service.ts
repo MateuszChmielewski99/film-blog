@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comment } from '../models/comment';
-
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-   private url: string = 'https://us-central1-foodblogcloudeapi.cloudfunctions.net/api/comments'
-  //private url: string = 'http://localhost:5000/foodblogcloudeapi/us-central1/api/comments'
+  private url:string = environment.apiUrl+"/comments";
   private headers: HttpHeaders = new HttpHeaders()
     .set("Content-Type", "application/json")
     .set("Accept", "application/json");
