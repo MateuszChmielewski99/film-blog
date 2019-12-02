@@ -9,7 +9,7 @@ type PostData = {
 }
 
 export interface Post {
-    id:string;
+    id?:string;
     data:PostData;
 }
 

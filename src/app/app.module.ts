@@ -24,6 +24,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { PostFormComponent } from './components/add-post-panel/post-form/post-form.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { CategoryButtonComponent } from './components/add-post-panel/category-button/category-button.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     CommentInputComponent,
     RegisterPageComponent,
     PostFormComponent,
+    CategoryButtonComponent,
   ],
   imports: [
     BrowserModule,

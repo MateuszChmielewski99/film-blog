@@ -1,0 +1,8 @@
+.wrapper{
+    width: 100px;
+    height: 23px;
+    background-color: lightblue;
+    border: 1px solid darkgray ;
+    border-radius:25px ;
+    text-align: center;
+}

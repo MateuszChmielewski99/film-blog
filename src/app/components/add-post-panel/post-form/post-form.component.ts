@@ -14,10 +14,9 @@ import { of } from 'rxjs';
 })
 export class PostFormComponent implements OnInit {
   public Editor = ClassicEditor;
-  public selectedCategory:string;
+  public selectedCategory:string = "penis";
   public categories = of(["category1","category2"]);
   public postToAdd: Post = {
-    id: "",
     data: {
       userId:-1,
       title:"",
@@ -34,17 +33,23 @@ export class PostFormComponent implements OnInit {
 
   ngOnInit() {
     this.postForm = this.formBuilder.group({
-      title: ['', [Validators.required]]
+      title: ['', [Validators.required]],
+      customCategory: ['',[Validators.maxLength]]
     });
   }
 
   public onChange({ editor }) {
-    console.log(this.postToAdd.data);
     this.postToAdd.data.description = editor.getData();;
   }
 
   public onSubmit() {
     this.postToAdd.data.creationDate = Date.now().toString();
     this.postToAdd.data.title = this.postForm.get('title').value;
+    console.log(this.postToAdd.data);
   }
+
+  public tmp({value}){
+    console.log(value);
+  }
+
 }
