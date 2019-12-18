@@ -1,0 +1,22 @@
+#container{
+    display: flex;
+   justify-content: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+mat-card{
+    width: 60%;
+    height: 50vh;
+    text-align: center;
+}
+
+form{
+    width: 40vh;
+    margin: auto;
+    
+}
+
+mat-card-content{
+    margin-top: 5vh;
+}

@@ -6,6 +6,7 @@ import { SinglePostComponent } from './components/post-components/single-post/si
 
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { PostFormComponent } from './components/add-post-panel/post-form/post-form.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path:'register',
     component: RegisterPageComponent
+  },
+  {
+    path:'signin',
+    component:SigninComponent
   }
 ];
 

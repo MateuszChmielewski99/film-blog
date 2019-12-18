@@ -6,11 +6,7 @@
       <mat-form-field class="categories">
         <mat-label>Kategorie</mat-label>
         <mat-select>
-          <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 1 </a></mat-option>
-          <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 2 </a></mat-option>
-          <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 3 </a></mat-option>
-          <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 4 </a></mat-option>
-          <mat-option><a [routerLink]="['/']" routerLinkActive="router-link-active">  Kategoria 5 </a></mat-option>
+          <mat-option  *ngFor="let item of categories" ><a [routerLink]="['/', item]" routerLinkActive="router-link-active">  {{item}} </a></mat-option>
         </mat-select>
       </mat-form-field>
       <a mat-list-item [routerLink]="['/posts/add']" routerLinkActive="router-link-active" (click)="drawer.close()"> Dodaj nowy post </a>
@@ -34,8 +30,11 @@
       </mat-toolbar-row>
       <mat-toolbar-row>
         <span class="spacer"></span>
-        <a [routerLink]="['/#']" routerLinkActive="router-link-active" class="rej-and-logon">Logowanie </a>
+        <div *ngIf="isLogged else signOut">
+        <a [routerLink]="['/signin']" routerLinkActive="router-link-active" class="rej-and-logon">Logowanie </a>
         <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="rej-and-logon"> Rejestracja </a>
+      </div>
+      <ng-template #signOut > <div class="rej-and-logon" (click)="logOut()">Wyloguj</div> </ng-template>
       </mat-toolbar-row>
     </mat-toolbar>
     <ng-content></ng-content>

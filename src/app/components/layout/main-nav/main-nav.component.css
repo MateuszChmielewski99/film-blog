@@ -37,6 +37,7 @@
   text-decoration: none;
   text-align: right;
   color: white;
+  cursor: pointer;
 }
 
 .rej-and-logon:hover {

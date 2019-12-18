@@ -25,6 +25,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { PostFormComponent } from './components/add-post-panel/post-form/post-form.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CategoryButtonComponent } from './components/add-post-panel/category-button/category-button.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CategoryButtonComponent } from './components/add-post-panel/category-bu
     RegisterPageComponent,
     PostFormComponent,
     CategoryButtonComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
