@@ -26,6 +26,9 @@ import { PostFormComponent } from './components/add-post-panel/post-form/post-fo
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { CategoryButtonComponent } from './components/add-post-panel/category-button/category-button.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { DashboardPageComponent } from './components/dashboard/dashboard-page/dashboard-page.component';
+import { SingleDashboardPostItemComponent } from './components/dashboard/single-dashboard-post-item/single-dashboard-post-item.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { SigninComponent } from './components/signin/signin.component';
     PostFormComponent,
     CategoryButtonComponent,
     SigninComponent,
+    DashboardPageComponent,
+    SingleDashboardPostItemComponent,
   ],
   imports: [
     BrowserModule,

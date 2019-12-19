@@ -7,6 +7,8 @@ import { SinglePostComponent } from './components/post-components/single-post/si
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { PostFormComponent } from './components/add-post-panel/post-form/post-form.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { DashboardPageComponent } from './components/dashboard/dashboard-page/dashboard-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +18,8 @@ const routes: Routes = [
   },
   {
     path:'posts/add',
-    component:PostFormComponent
+    component:PostFormComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'posts/:id',
@@ -29,6 +32,11 @@ const routes: Routes = [
   {
     path:'signin',
     component:SigninComponent
+  },
+  {
+    path:'dashboard',
+    component:DashboardPageComponent,
+    canActivate:[AuthGuard]
   }
 ];
 
