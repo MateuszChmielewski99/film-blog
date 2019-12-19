@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
 import { HttpClient } from '@angular/common/http';;
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -29,6 +29,11 @@ export class PostService {
 
   updatePost(postId, updatedPost) {
 
+  }
+
+  getPostsByUserId(id:any){
+    // return this.client.get<Post[]>(`${this.url}/user/${id}/posts`);
+    return of({id:1, data:{userId:1,title:"some title", description:"<p>some desc</p>", pictureUrl:"https://via.placeholder.com/150/771796", creationDate:"now", categories:[]}});
   }
 
   addPost(post:Post):Observable<Post>{

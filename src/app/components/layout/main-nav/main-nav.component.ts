@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MainNavComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private categoriesService:CategoriesService, private authService:AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private categoriesService:CategoriesService, private authService:AuthService, private router:Router) {}
   
   ngOnInit(){
     this.categoriesService.getAll().subscribe(s => this.categories = s);
@@ -29,5 +30,6 @@ export class MainNavComponent implements OnInit{
 
   logOut(){
     this.authService.signOut();
+    this.router.navigate(['/']);
   }
 }

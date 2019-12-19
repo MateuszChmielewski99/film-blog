@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Post } from 'src/app/models/post';
 
 @Component({
   selector: 'app-single-dashboard-post-item',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleDashboardPostItemComponent implements OnInit {
 
+  @Input() post:Post;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.post);
   }
 
 }

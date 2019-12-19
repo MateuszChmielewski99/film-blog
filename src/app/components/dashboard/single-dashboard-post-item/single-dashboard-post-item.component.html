@@ -1,1 +1,12 @@
-<p>single-dashboard-post-item works!</p>
+<div class="container">
+    <img [src]="post.data.pictureUrl"/>
+    <span class="spacer"></span>
+    <div><h5>{{post.data.title}}</h5></div>
+    <span class="spacer"></span>
+    <button class="close"><i class="material-icons">
+        edit
+        </i></button>
+    <button type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+</div>

@@ -9,7 +9,8 @@
           <mat-option  *ngFor="let item of categories" ><a [routerLink]="['/', item]" routerLinkActive="router-link-active">  {{item}} </a></mat-option>
         </mat-select>
       </mat-form-field>
-      <a mat-list-item [routerLink]="['/posts/add']" routerLinkActive="router-link-active" (click)="drawer.close()"> Dodaj nowy post </a>
+      <a mat-list-item *ngIf="isLogged$ | async" [routerLink]="['/posts/add']" routerLinkActive="router-link-active" (click)="drawer.close()"> Dodaj nowy post </a>
+      <a mat-list-item *ngIf="isLogged$ | async" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" (click)="drawer.close()">Moje posty</a>
       <a mat-list-item href="#">Archiwum</a>
       <a mat-list-item href="#">O mnie</a>
     </mat-nav-list>
