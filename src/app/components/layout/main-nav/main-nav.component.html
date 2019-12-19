@@ -30,11 +30,11 @@
       </mat-toolbar-row>
       <mat-toolbar-row>
         <span class="spacer"></span>
-        <div *ngIf="isLogged else signOut">
+        <div *ngIf="!(isLogged$ | async); else notLoggedIn">
         <a [routerLink]="['/signin']" routerLinkActive="router-link-active" class="rej-and-logon">Logowanie </a>
         <a [routerLink]="['/register']" routerLinkActive="router-link-active" class="rej-and-logon"> Rejestracja </a>
       </div>
-      <ng-template #signOut > <div class="rej-and-logon" (click)="logOut()">Wyloguj</div> </ng-template>
+       <ng-template #notLoggedIn><div class="rej-and-logon" (click)="logOut()">Wyloguj</div></ng-template>
       </mat-toolbar-row>
     </mat-toolbar>
     <ng-content></ng-content>

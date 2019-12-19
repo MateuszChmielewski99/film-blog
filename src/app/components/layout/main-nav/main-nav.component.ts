@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MainNavComponent implements OnInit{
   categories:string[];
-  isLogged:boolean;
+  isLogged$:Observable<boolean>;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -24,10 +24,10 @@ export class MainNavComponent implements OnInit{
   
   ngOnInit(){
     this.categoriesService.getAll().subscribe(s => this.categories = s);
-    this.authService.currentUserSubject.subscribe(s => this.isLogged = !!s);
+    this.isLogged$ = this.authService.isLoggedIn;
   }
 
   logOut(){
-    this.authService.logout();
+    this.authService.signOut();
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -9,19 +10,28 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private builder: FormBuilder, private router:Router) { }
   signInGroup: FormGroup;
   ngOnInit() {
-    this.signInGroup = new FormGroup({
-      mail: new FormControl(),
-      password: new FormControl()
+    this.signInGroup = this.builder.group({
+      mail: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
-  get email() { return this.signInGroup.get('mail').value; }
-  get password() { return this.signInGroup.get('password').value; }
+  get email() { return this.signInGroup.get('mail'); }
+  get password() { return this.signInGroup.get('password'); }
 
   trySignIn() {
-    this.authService.login(this.email, this.password).subscribe();
+    if (this.validateData()) {
+      let correct = this.authService.signIn({ email: this.email.value, password: this.password.value });
+      if(correct){
+        this.router.navigate(['/']);
+      }
+    }
+  }
+
+  private validateData(): boolean {
+    return this.email.touched && this.email.valid && this.password.touched && this.password.valid;
   }
 }
