@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Post } from 'src/app/models/post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,30 +12,41 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class PostFormComponent implements OnInit {
   public Editor = ClassicEditor;
-  public selectedCategory: string = "penis";
+  public selectedCategory: string;
   public categories: string[];
   public possibleCategories: string[] = [];
   public isUserSure: boolean = false;
-  public postToAdd: Post = {
-    data: {
-      userId: -1,
-      title: "",
-      description: "",
-      pictureUrl: "",
-      creationDate: Date.now().toString(),
-      categories: [],
-    }
-  };
+  public postToAdd: Post;
+  @Input() post: Post;
+  @Output() dialogClosed: EventEmitter<any> = new EventEmitter();
 
   public postForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private postService: PostService, private categoriesService: CategoriesService) { }
 
   ngOnInit() {
+    let initialTitle = this.post.data.title?this.post.data.title:'';
     this.postForm = this.formBuilder.group({
-      title: ['', [Validators.required]],
+      title: [initialTitle, [Validators.required]],
       customCategory: ['', [Validators.maxLength]]
     });
+
+  
+    if (!!this.post) {
+      this.postToAdd = this.post;
+    } else {
+      this.postToAdd = {
+        data: {
+          userId: -1,
+          title: "",
+          description: "",
+          pictureUrl: "",
+          creationDate: Date.now().toString(),
+          categories: [],
+        }
+      };
+
+    }
 
     this.categoriesService.getAll().subscribe(categories => {
       if (categories) {
@@ -48,11 +59,17 @@ export class PostFormComponent implements OnInit {
     });
   }
 
+  get title(){return this.postForm.get('title').value;}
+
   public onChange({ editor }) {
-    this.postToAdd.data.description = editor.getData();;
+    this.postToAdd.data.description = editor.getData();
   }
 
   public onSubmit() {
+    if (!!this.post) {
+      this.dialogClosed.emit(this.postToAdd);
+    }
+
     this.postToAdd.data.creationDate = Date.now().toString();
     this.postToAdd.data.title = this.postForm.get('title').value;
     if (this.possibleCategories.length > 0 || this.isUserSure) {

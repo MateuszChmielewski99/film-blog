@@ -15,3 +15,11 @@ img{
 button{
     margin-left: 15px;
 }
+
+#delete{
+    color: red;
+}
+
+#edit{
+    color: rgb(48, 187, 233);
+}

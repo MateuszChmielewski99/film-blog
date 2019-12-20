@@ -3,10 +3,10 @@
     <span class="spacer"></span>
     <div><h5>{{post.data.title}}</h5></div>
     <span class="spacer"></span>
-    <button class="close"><i class="material-icons">
-        edit
-        </i></button>
-    <button type="button" class="close" aria-label="Close">
-            <span aria-hidden="true">×</span>
+    <button class="close" (click)="openDialog()"><span class="material-icons">
+        <mat-icon id="edit">edit</mat-icon>
+        </span></button>
+    <button type="button" class="close" aria-label="Close" (click)="deletePost()">
+            <span aria-hidden="true" ><mat-icon id="delete">delete</mat-icon></span>
         </button>
 </div>

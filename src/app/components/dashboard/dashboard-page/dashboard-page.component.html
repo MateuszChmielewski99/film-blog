@@ -3,8 +3,8 @@
         <h1>Twoje wpisy</h1>
     </mat-card-title>
     <mat-card-content>
-        <div *ngFor="let item of posts">
-            <app-single-dashboard-post-item [post]="item"></app-single-dashboard-post-item>
+        <div *ngFor="let item of postsCopy">
+            <app-single-dashboard-post-item [post]="item" (postDelete)="onPostDeleted($event)"></app-single-dashboard-post-item>
         </div>
     </mat-card-content>
 </mat-card>

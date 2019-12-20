@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatButtonToggleModule, MatSelectModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatButtonToggleModule, MatSelectModule, MatFormFieldModule, MatInputModule, MatDialog, MatDialogModule} from '@angular/material';
 import { MainNavComponent } from './components/layout/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,6 +28,7 @@ import { CategoryButtonComponent } from './components/add-post-panel/category-bu
 import { SigninComponent } from './components/signin/signin.component';
 import { DashboardPageComponent } from './components/dashboard/dashboard-page/dashboard-page.component';
 import { SingleDashboardPostItemComponent } from './components/dashboard/single-dashboard-post-item/single-dashboard-post-item.component';
+import { EditDialogComponent } from './components/dashboard/edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { SingleDashboardPostItemComponent } from './components/dashboard/single-
     SigninComponent,
     DashboardPageComponent,
     SingleDashboardPostItemComponent,
+    EditDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,9 +57,10 @@ import { SingleDashboardPostItemComponent } from './components/dashboard/single-
     BrowserAnimationsModule, 
     MatButtonModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
     ,MatCardModule,MatButtonToggleModule,HttpClientModule,MatSelectModule,FormsModule,MatFormFieldModule,MatInputModule,
-    ReactiveFormsModule,MatPaginatorModule,RecaptchaModule,CKEditorModule
+    ReactiveFormsModule,MatPaginatorModule,RecaptchaModule,CKEditorModule,MatIconModule,MatDialogModule
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[EditDialogComponent]
 })
 export class AppModule { }

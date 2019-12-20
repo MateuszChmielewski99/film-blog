@@ -3,14 +3,14 @@
         <form>
             <div [formGroup]="postForm">
                 <mat-form-field>
-                    <input matInput formControlName="title" placeholder="Tytuł">
+                    <input matInput formControlName="title" placeholder="Tytuł" [(value)]="postToAdd.data.title">
                 </mat-form-field>
             </div>
             <ckeditor [editor]="Editor"
                 [config]="{ toolbar: [ 'heading','|', 'bold', 'italic', 'bulletedList','numberedList','undo','redo' ] }"
-                (change)="onChange($event)"></ckeditor>
+                (change)="onChange($event)" [(data)]="postToAdd.data.description"></ckeditor>
             <div>
-                <mat-form-field>
+                <mat-form-field id="categories">
                     <mat-label>Kategorie</mat-label>
                     <mat-select [(ngModel)]="postToAdd.data.categories" name="category" multiple>
                         <mat-option *ngFor="let category of categories" [value]="category">
